@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "PDF DeepSeek 智能翻译助手",
+  "version": "2.0",
+  "description": "专业的PDF文档翻译助手，支持专业术语解释、长难句分析、历史记录等功能",
+  "permissions": ["scripting", "activeTab", "clipboardRead", "storage", "tts"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PDF DeepSeek 翻译助手"
+  }
+}

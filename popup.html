@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+        .shortcuts {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+        .shortcuts h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .shortcut {
+            font-size: 12px;
+            color: #666;
+            margin: 4px 0;
+        }
+        .shortcut kbd {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🌐</div>
+        <div class="title">DeepSeek 翻译助手</div>
+        <div class="subtitle">专业的PDF文档翻译工具</div>
+    </div>
+    
+    <ul class="features">
+        <li>智能识别专业术语和长难句</li>
+        <li>三种翻译模式：快速/详细/学术</li>
+        <li>支持历史记录和收藏功能</li>
+        <li>明暗主题切换</li>
+        <li>语音朗读翻译结果</li>
+        <li>快捷键操作</li>
+    </ul>
+    
+    <div class="shortcuts">
+        <h4>快捷键</h4>
+        <div class="shortcut"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> 快速翻译</div>
+        <div class="shortcut"><kbd>Esc</kbd> 关闭弹窗</div>
+    </div>
+
+    <div class="api-key-form" style="margin-top: 20px; padding: 12px; background: #f8f9fa; border-radius: 8px;">
+        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #333;">DeepSeek API Key</h4>
+        <input type="password" id="apiKey" placeholder="输入您的API Key" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 8px;">
+        <button id="saveApiKey" style="width: 100%; padding: 8px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">保存</button>
+        <div id="apiKeyStatus" style="margin-top: 8px; font-size: 12px; text-align: center;"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -3,7 +3,13 @@
   "name": "PDF DeepSeek 智能翻译助手",
   "version": "2.0",
   "description": "专业的PDF文档翻译助手，支持专业术语解释、长难句分析、历史记录等功能",
-  "permissions": ["scripting", "activeTab", "clipboardRead", "storage", "tts"],
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "clipboardRead",
+    "storage",
+    "tts"
+  ],
   "host_permissions": ["<all_urls>"],
   "icons": {
     "16": "icon16.png",

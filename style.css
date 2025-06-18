@@ -1,69 +1,229 @@
-.deepseek-input-section {
-    margin-bottom: 16px;
+:root {
+  --morandi-main: #a3b18a;
+  --morandi-accent: #b5c99a;
+  --morandi-bg: #f6f5f2;
+  --morandi-bg-dark: #e9ecef;
+  --morandi-border: #b7b7a4;
+  --morandi-hover: #d6ccc2;
+  --morandi-btn: #b5838d;
+  --morandi-btn-hover: #cdb4db;
+  --morandi-text: #4a4e69;
+  --morandi-muted: #888888;
+  --morandi-shadow: 0 4px 24px rgba(163, 177, 138, 0.12);
+  --morandi-toast: #b5c99a;
+  --morandi-toast-text: #4a4e69;
+  --morandi-close: #b5838d;
+  --morandi-close-hover: #e5989b;
+  --morandi-tab-active: #a3b18a;
+  --morandi-tab-inactive: #e9ecef;
+  --morandi-tab-hover: #d6ccc2;
+  --morandi-scrollbar: #b7b7a4;
+  --morandi-scrollbar-bg: #f6f5f2;
+  --morandi-dark-bg: #4a4e69;
+  --morandi-dark-text: #f6f5f2;
+  --morandi-dark-border: #888888;
 }
 
-.deepseek-input-section textarea {
-    width: 100%;
-    min-height: 80px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    resize: vertical;
-    font-family: inherit;
+body, .deepseek-container {
+  background: var(--morandi-bg);
+  color: var(--morandi-text);
+  font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 15px;
 }
 
-.deepseek-result-section {
-    border-top: 1px solid #eee;
-    padding-top: 16px;
-    margin-top: 16px;
+.deepseek-container {
+  border-radius: 18px;
+  box-shadow: var(--morandi-shadow);
+  border: 1.5px solid var(--morandi-border);
 }
 
-.deepseek-history-detail {
-    padding: 16px;
-    max-height: 300px;
-    overflow-y: auto;
+button, .deepseek-action-btn, .deepseek-mode-btn {
+  background: var(--morandi-btn);
+  color: var(--morandi-text);
+  border: none;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 15px;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  box-shadow: var(--morandi-shadow);
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+}
+button:hover, .deepseek-action-btn:hover, .deepseek-mode-btn:hover {
+  background: var(--morandi-btn-hover);
+  color: var(--morandi-text);
 }
 
-.deepseek-history-detail-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
+.deepseek-mode-btn {
+  background: var(--morandi-tab-inactive);
+  color: var(--morandi-text);
+  border: 1.5px solid var(--morandi-border);
+  margin-right: 4px;
+  font-weight: 500;
+}
+.deepseek-mode-btn.active {
+  background: var(--morandi-tab-active);
+  color: var(--morandi-text);
+  border-color: var(--morandi-tab-active);
+  box-shadow: 0 2px 8px rgba(163, 177, 138, 0.10);
 }
 
-.deepseek-history-detail-content {
-    font-size: 14px;
-    line-height: 1.6;
+.deepseek-popup-header, .deepseek-history-header {
+  background: var(--morandi-main);
+  color: var(--morandi-text);
+  border-bottom: 1.5px solid var(--morandi-border);
+  border-radius: 18px 18px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 18px 24px;
 }
 
-.deepseek-history-detail-content h1,
-.deepseek-history-detail-content h2,
-.deepseek-history-detail-content h3 {
-    margin: 16px 0 8px 0;
-    color: #333;
+.deepseek-popup-content, .deepseek-history-list, .deepseek-md-content {
+  background: var(--morandi-bg-dark);
+  color: var(--morandi-text);
+  border-radius: 0 0 18px 18px;
+  padding: 22px 24px;
 }
 
-.deepseek-history-detail-content pre {
-    background: #f5f5f5;
-    padding: 12px;
-    border-radius: 4px;
-    overflow-x: auto;
+input, select, textarea {
+  background: #fff;
+  border: 1.5px solid var(--morandi-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: var(--morandi-text);
+  outline: none;
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border: 1.5px solid var(--morandi-main);
 }
 
-.deepseek-history-detail-content code {
-    background: #f0f0f0;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: 'Courier New', monospace;
+.deepseek-control-btn {
+  background: var(--morandi-accent);
+  color: var(--morandi-text);
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.deepseek-control-btn:hover {
+  background: var(--morandi-hover);
+  color: var(--morandi-text);
 }
 
-.error {
-    color: #e74c3c;
-    padding: 8px;
-    background: #fdf2f2;
-    border-radius: 4px;
-    border-left: 4px solid #e74c3c;
+.deepseek-history-item {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: var(--morandi-shadow);
+  padding: 14px 18px;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  border: 1.2px solid var(--morandi-border);
+  font-size: 14px;
+  color: var(--morandi-text);
 }
+.deepseek-history-item:hover {
+  background: var(--morandi-hover);
+  box-shadow: 0 2px 12px rgba(181, 201, 154, 0.10);
+  color: var(--morandi-text);
+}
+
+.deepseek-md-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 15px;
+  color: var(--morandi-text);
+  box-shadow: 0 2px 8px rgba(163, 177, 138, 0.08);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--morandi-scrollbar-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--morandi-scrollbar);
+  border-radius: 8px;
+}
+
+/* toast提示美化 */
+.deepseek-toast, .toast {
+  background: var(--morandi-toast);
+  color: var(--morandi-toast-text);
+  border-radius: 10px;
+  font-size: 15px;
+  box-shadow: var(--morandi-shadow);
+  padding: 12px 22px;
+}
+
+/* 关闭按钮美化 */
+.deepseek-close-btn, #deepseek-close-history-detail {
+  background: var(--morandi-close);
+  color: var(--morandi-text);
+  border-radius: 50%;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.deepseek-close-btn:hover, #deepseek-close-history-detail:hover {
+  background: var(--morandi-close-hover);
+  color: var(--morandi-text);
+}
+
+/* 导出按钮、收藏按钮等 */
+.deepseek-action-btn {
+  background: var(--morandi-btn);
+  color: var(--morandi-text);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 6px;
+  padding: 7px 16px;
+}
+
+/* 响应式适配 */
+@media (max-width: 600px) {
+  .deepseek-container, .deepseek-popup-content, .deepseek-md-content {
+    padding: 10px 6px;
+    border-radius: 10px;
+  }
+  .deepseek-popup-header, .deepseek-history-header {
+    padding: 10px 8px;
+    font-size: 15px;
+  }
+}
+
+/* 深色模式支持 */
+body.deepseek-dark-theme, .deepseek-dark-theme {
+  background: var(--morandi-dark-bg) !important;
+  color: var(--morandi-dark-text) !important;
+}
+.deepseek-dark-theme .deepseek-popup-content, .deepseek-dark-theme .deepseek-md-content {
+  background: #5e6472 !important;
+  color: var(--morandi-dark-text) !important;
+}
+.deepseek-dark-theme .deepseek-mode-btn {
+  background: #6d6875 !important;
+  color: var(--morandi-dark-text) !important;
+  border-color: var(--morandi-dark-border) !important;
+}
+.deepseek-dark-theme .deepseek-mode-btn.active {
+  background: var(--morandi-main) !important;
+  color: var(--morandi-dark-text) !important;
+}
+
+/* 其它细节样式可后续补充 */

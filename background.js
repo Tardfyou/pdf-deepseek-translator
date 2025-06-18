@@ -1,6 +1,11 @@
 // 扩展安装/更新时的初始化
 chrome.runtime.onInstalled.addListener(() => {
     console.log('DeepSeek翻译助手已安装/更新');
+    chrome.contextMenus.create({
+        id: 'deepseek-translate-selection',
+        title: 'DeepSeek 翻译选中文本',
+        contexts: ['selection']
+    });
 });
 
 // 监听来自content script的消息
@@ -45,6 +50,16 @@ chrome.runtime.onConnect.addListener(port => {
                     port.postMessage({type: 'apiStatus', data: status});
                 });
             }
+        });
+    }
+});
+
+// 监听右键菜单点击
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === 'deepseek-translate-selection' && info.selectionText) {
+        chrome.tabs.sendMessage(tab.id, {
+            type: 'deepseek_translate_selection',
+            text: info.selectionText
         });
     }
 });

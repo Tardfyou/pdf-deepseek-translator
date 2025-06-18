@@ -1,3 +1,4 @@
+/* 只美化插件相关界面，不影响浏览器全局 */
 :root {
   --morandi-main: #a3b18a;
   --morandi-accent: #b5c99a;
@@ -24,20 +25,19 @@
   --morandi-dark-border: #888888;
 }
 
-body, .deepseek-container {
+/* 只作用于插件容器及其子元素 */
+.deepseek-container {
   background: var(--morandi-bg);
   color: var(--morandi-text);
   font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 15px;
-}
-
-.deepseek-container {
   border-radius: 18px;
   box-shadow: var(--morandi-shadow);
   border: 1.5px solid var(--morandi-border);
 }
 
-button, .deepseek-action-btn, .deepseek-mode-btn {
+/* 其余样式全部以 .deepseek-container 或其子类为前缀 */
+.deepseek-container button, .deepseek-container .deepseek-action-btn, .deepseek-container .deepseek-mode-btn {
   background: var(--morandi-btn);
   color: var(--morandi-text);
   border: none;
@@ -50,26 +50,26 @@ button, .deepseek-action-btn, .deepseek-mode-btn {
   outline: none;
   font-weight: 500;
 }
-button:hover, .deepseek-action-btn:hover, .deepseek-mode-btn:hover {
+.deepseek-container button:hover, .deepseek-container .deepseek-action-btn:hover, .deepseek-container .deepseek-mode-btn:hover {
   background: var(--morandi-btn-hover);
   color: var(--morandi-text);
 }
 
-.deepseek-mode-btn {
+.deepseek-container .deepseek-mode-btn {
   background: var(--morandi-tab-inactive);
   color: var(--morandi-text);
   border: 1.5px solid var(--morandi-border);
   margin-right: 4px;
   font-weight: 500;
 }
-.deepseek-mode-btn.active {
+.deepseek-container .deepseek-mode-btn.active {
   background: var(--morandi-tab-active);
   color: var(--morandi-text);
   border-color: var(--morandi-tab-active);
   box-shadow: 0 2px 8px rgba(163, 177, 138, 0.10);
 }
 
-.deepseek-popup-header, .deepseek-history-header {
+.deepseek-container .deepseek-popup-header, .deepseek-container .deepseek-history-header {
   background: var(--morandi-main);
   color: var(--morandi-text);
   border-bottom: 1.5px solid var(--morandi-border);
@@ -80,14 +80,14 @@ button:hover, .deepseek-action-btn:hover, .deepseek-mode-btn:hover {
   padding: 18px 24px;
 }
 
-.deepseek-popup-content, .deepseek-history-list, .deepseek-md-content {
+.deepseek-container .deepseek-popup-content, .deepseek-container .deepseek-history-list, .deepseek-container .deepseek-md-content {
   background: var(--morandi-bg-dark);
   color: var(--morandi-text);
   border-radius: 0 0 18px 18px;
   padding: 22px 24px;
 }
 
-input, select, textarea {
+.deepseek-container input, .deepseek-container select, .deepseek-container textarea {
   background: #fff;
   border: 1.5px solid var(--morandi-border);
   border-radius: 10px;
@@ -97,11 +97,11 @@ input, select, textarea {
   outline: none;
   transition: border 0.2s;
 }
-input:focus, select:focus, textarea:focus {
+.deepseek-container input:focus, .deepseek-container select:focus, .deepseek-container textarea:focus {
   border: 1.5px solid var(--morandi-main);
 }
 
-.deepseek-control-btn {
+.deepseek-container .deepseek-control-btn {
   background: var(--morandi-accent);
   color: var(--morandi-text);
   border-radius: 10px;
@@ -115,12 +115,12 @@ input:focus, select:focus, textarea:focus {
   margin-left: 6px;
   transition: background 0.2s, color 0.2s;
 }
-.deepseek-control-btn:hover {
+.deepseek-container .deepseek-control-btn:hover {
   background: var(--morandi-hover);
   color: var(--morandi-text);
 }
 
-.deepseek-history-item {
+.deepseek-container .deepseek-history-item {
   background: #fff;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -131,13 +131,13 @@ input:focus, select:focus, textarea:focus {
   font-size: 14px;
   color: var(--morandi-text);
 }
-.deepseek-history-item:hover {
+.deepseek-container .deepseek-history-item:hover {
   background: var(--morandi-hover);
   box-shadow: 0 2px 12px rgba(181, 201, 154, 0.10);
   color: var(--morandi-text);
 }
 
-.deepseek-md-content {
+.deepseek-container .deepseek-md-content {
   background: #fff;
   border-radius: 10px;
   padding: 16px 18px;
@@ -146,18 +146,18 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 2px 8px rgba(163, 177, 138, 0.08);
 }
 
-/* 滚动条美化 */
-::-webkit-scrollbar {
+/* 滚动条美化，仅作用于插件容器内部 */
+.deepseek-container ::-webkit-scrollbar {
   width: 8px;
   background: var(--morandi-scrollbar-bg);
 }
-::-webkit-scrollbar-thumb {
+.deepseek-container ::-webkit-scrollbar-thumb {
   background: var(--morandi-scrollbar);
   border-radius: 8px;
 }
 
 /* toast提示美化 */
-.deepseek-toast, .toast {
+.deepseek-container .deepseek-toast, .deepseek-container .toast {
   background: var(--morandi-toast);
   color: var(--morandi-toast-text);
   border-radius: 10px;
@@ -167,7 +167,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* 关闭按钮美化 */
-.deepseek-close-btn, #deepseek-close-history-detail {
+.deepseek-container .deepseek-close-btn, .deepseek-container #deepseek-close-history-detail {
   background: var(--morandi-close);
   color: var(--morandi-text);
   border-radius: 50%;
@@ -180,13 +180,13 @@ input:focus, select:focus, textarea:focus {
   justify-content: center;
   transition: background 0.2s, color 0.2s;
 }
-.deepseek-close-btn:hover, #deepseek-close-history-detail:hover {
+.deepseek-container .deepseek-close-btn:hover, .deepseek-container #deepseek-close-history-detail:hover {
   background: var(--morandi-close-hover);
   color: var(--morandi-text);
 }
 
 /* 导出按钮、收藏按钮等 */
-.deepseek-action-btn {
+.deepseek-container .deepseek-action-btn {
   background: var(--morandi-btn);
   color: var(--morandi-text);
   border-radius: 8px;
@@ -197,31 +197,31 @@ input:focus, select:focus, textarea:focus {
 
 /* 响应式适配 */
 @media (max-width: 600px) {
-  .deepseek-container, .deepseek-popup-content, .deepseek-md-content {
+  .deepseek-container, .deepseek-container .deepseek-popup-content, .deepseek-container .deepseek-md-content {
     padding: 10px 6px;
     border-radius: 10px;
   }
-  .deepseek-popup-header, .deepseek-history-header {
+  .deepseek-container .deepseek-popup-header, .deepseek-container .deepseek-history-header {
     padding: 10px 8px;
     font-size: 15px;
   }
 }
 
-/* 深色模式支持 */
-body.deepseek-dark-theme, .deepseek-dark-theme {
+/* 深色模式支持，仅作用于插件容器 */
+.deepseek-container.deepseek-dark-theme, .deepseek-container .deepseek-dark-theme {
   background: var(--morandi-dark-bg) !important;
   color: var(--morandi-dark-text) !important;
 }
-.deepseek-dark-theme .deepseek-popup-content, .deepseek-dark-theme .deepseek-md-content {
+.deepseek-container.deepseek-dark-theme .deepseek-popup-content, .deepseek-container.deepseek-dark-theme .deepseek-md-content {
   background: #5e6472 !important;
   color: var(--morandi-dark-text) !important;
 }
-.deepseek-dark-theme .deepseek-mode-btn {
+.deepseek-container.deepseek-dark-theme .deepseek-mode-btn {
   background: #6d6875 !important;
   color: var(--morandi-dark-text) !important;
   border-color: var(--morandi-dark-border) !important;
 }
-.deepseek-dark-theme .deepseek-mode-btn.active {
+.deepseek-container.deepseek-dark-theme .deepseek-mode-btn.active {
   background: var(--morandi-main) !important;
   color: var(--morandi-dark-text) !important;
 }
